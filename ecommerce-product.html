@@ -414,8 +414,8 @@
                                                         <td>20</td>
                                                         <td>80</td>
                                                         <td colspan="9">
-                                                            <a href="#" class="btn btn-outline-light">Sửa</a>
-                                                            <a href="#" class="btn btn-outline-light">Xuất bò</a>
+                                                            <a href="#" class="btn btn-outline-light edit-button" data-toggle="modal" data-target="#editCattleModal" data-id="01">Sửa</a>
+                                                            <a href="#" class="btn btn-outline-light export-button" data-toggle="modal" data-target="#cattleInfoModal" data-id="01" data-nameid="Sen201901" data-giốngbò="Senepol" data-gender="Đực" data-ngàynhậpchuồng="27-08-2018 01:22:12" data-cânnhập="20">Xuất bò</a>
                                                         </td>
                                                     </tr>
                                                     <tr>
@@ -427,9 +427,9 @@
                                                         <td>20</td>
                                                         <td>80</td>
                                                         <td colspan="9">
-                                                            <a href="#" class="btn btn-outline-light">Sửa</a>
-                                                            <a href="#" class="btn btn-outline-light">Xuất bò</a>
-                                                        </td>                                                   
+                                                            <a href="#" class="btn btn-outline-light edit-button" data-toggle="modal" data-target="#editCattleModal" data-id="01">Sửa</a>
+                                                            <a href="#" class="btn btn-outline-light export-button" data-toggle="modal" data-target="#cattleInfoModal" data-id="01" data-nameid="Sen201901" data-giốngbò="Senepol" data-gender="Đực" data-ngàynhậpchuồng="27-08-2018 01:22:12" data-cânnhập="20">Xuất bò</a>
+                                                        </td>                                                  
                                                     </tr>
                                                     <tr>
                                                         <td>03</td>
@@ -440,9 +440,9 @@
                                                         <td>20</td>
                                                         <td>80</td>
                                                         <td colspan="9">
-                                                            <a href="#" class="btn btn-outline-light">Sửa</a>
-                                                            <a href="#" class="btn btn-outline-light">Xuất bò</a>
-                                                        </td>                                         
+                                                            <a href="#" class="btn btn-outline-light edit-button" data-toggle="modal" data-target="#editCattleModal" data-id="01">Sửa</a>
+                                                            <a href="#" class="btn btn-outline-light export-button" data-toggle="modal" data-target="#cattleInfoModal" data-id="01" data-nameid="Sen201901" data-giốngbò="Senepol" data-gender="Đực" data-ngàynhậpchuồng="27-08-2018 01:22:12" data-cânnhập="20">Xuất bò</a>
+                                                        </td>                                      
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -477,6 +477,85 @@
                 </div>
             </div>
         </div>
+<!-- thêm bản sửa thông tin bò -->
+        <div class="modal fade" id="editCattleModal" tabindex="-1" role="dialog" aria-labelledby="editCattleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editCattleModalLabel">Chỉnh sửa</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editCattleForm">
+                            <div class="form-group">
+                                <label for="editName">NameID</label>
+                                <input type="text" class="form-control" id="editName" name="editName">
+                            </div>
+                            <div class="form-group">
+                                <label for="editGiốngBò">Giống Bò</label>
+                                <input type="text" class="form-control" id="editGiốngBò" name="editGiốngBò">
+                            </div>
+                            <div class="form-group">
+                                <label for="editGiốngBò">Giới tính</label>
+                                <select>
+                                    <option value="Đực">Đực</option>
+                                    <option value="Cái">Cái</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="editGiốngBò">Ngày nhập bò</label>
+                                <input type="date" class="form-control" id="editGiốngBò" name="editGiốngBò" placeholder="Nhập ngày nhập bò">
+                            </div>
+                            <div class="form-group">
+                                <label for="editGiốngBò">Cân nặng/KG (nhập)</label>
+                                <input type="text" class="form-control" id="editGiốngBò" name="editGiốngBò">
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Thoát</button>
+                        <button type="button" class="btn btn-primary" id="saveChanges">Lưu thông tin</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Xuất thông tin bò -->
+
+        <div class="modal fade" id="cattleInfoModal" tabindex="-1" role="dialog" aria-labelledby="cattleInfoModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cattleInfoModalLabel">Thông tin bò</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Display cattle information here -->
+                        <p><strong>ID:</strong> <span id="cattleId"></span></p>
+                        <p><strong>NameID:</strong> <span id="cattleNameId"></span></p>
+                        <p><strong>Giống Bò:</strong> <span id="cattleGiốngBò"></span></p>
+                        <p><strong>Giới tính:</strong> <span id="cattleGender"></span></p>
+                        <p><strong>Ngày Nhập Chuồng:</strong> <span id="cattleNgàyNhậpChuồng"></span></p>
+                        <p><strong>Cân nặng/KG(Nhập):</strong> <span id="cattleCânNhập"></span></p>
+                        <div class="form-group">
+                            <label for="exportWeight">Cân nặng/KG(Xuất):</label>
+                            <input type="text" class="form-control" id="exportWeight" placeholder="Nhập cân nặng khi xuất bò">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
+                        <button type="button" class="btn btn-primary" id="confirmExport">Xác nhận</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
     </div>
         <!-- ============================================================== -->
         <!-- end main wrapper  -->
@@ -490,6 +569,7 @@
         <script src="assets/vendor/slimscroll/jquery.slimscroll.js"></script>
         <!-- main js -->
         <script src="assets/libs/js/main-js.js"></script>
+        <script src="/UML/assets/libs/js/Chinhsua.js"></script>
 </body>
  
 </html>
