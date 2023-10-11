@@ -33,3 +33,4 @@ $(document).ready(function() {
         $("#cattleInfoModal").modal("hide");
     });
 });
+var getAddId = document.getElementById('addToWasehouse')
